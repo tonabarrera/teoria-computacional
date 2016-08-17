@@ -1,8 +1,20 @@
 #include "alfabeto.h"
 
 int iniciar() {
+    srand(time(NULL));
+    int continuar = 1;
+    int maximo = 1;
+    //maximo = 1 + rand() % (1000 + 1 - 1);
+    while(continuar) {
+        generar_palabras(maximo);
+        continuar = 0;
+        //continuar = rand() % 2;
+    }
+}
+
+int generar_palabras(int maximo) {
     FILE *archivo = NULL;
-    int k = 25;
+    int k = maximo;
     int longitud_palabra;
     int j;
     int m;
@@ -34,7 +46,7 @@ int iniciar() {
                 break;
             }
         }
-        printf("Va en la: %d\n", longitud_palabra);
+        //printf("Va en la: %d\n", longitud_palabra);
     }
 
     fputs("}", archivo);
