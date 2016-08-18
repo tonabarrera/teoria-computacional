@@ -3,13 +3,14 @@
 int iniciar() {
     srand(time(NULL));
     int continuar = 1;
-    int maximo = 1;
+    int maximo = 20;
     //maximo = 1 + rand() % (1000 + 1 - 1);
     while(continuar) {
         generar_palabras(maximo);
         continuar = 0;
         //continuar = rand() % 2;
     }
+    return 1;
 }
 
 int generar_palabras(int maximo) {
@@ -46,7 +47,7 @@ int generar_palabras(int maximo) {
                 break;
             }
         }
-        //printf("Va en la: %d\n", longitud_palabra);
+        printf("Va en la: %d\n", longitud_palabra);
     }
 
     fputs("}", archivo);
