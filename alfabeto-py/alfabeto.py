@@ -4,7 +4,7 @@ ALFABETO = ['0', '1']
 
 def iniciar():
     maximo = random.randint(1, 1000)
-    maximo = 2
+    maximo = 20
     continuar = True
     while continuar:
         generar_palabras(maximo)
