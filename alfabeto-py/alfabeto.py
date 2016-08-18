@@ -1,7 +1,5 @@
 import random
 
-ALFABETO = ['0', '1']
-
 def iniciar():
     maximo = random.randint(1, 1000)
     maximo = 20
@@ -21,7 +19,7 @@ def generar_palabras(maximo):
         while continuar:
             archivo.write(',')
             for j in range(longitud_palabra):
-                archivo.write(ALFABETO[palabra_temporal[j]])
+                archivo.write(palabra_temporal[j])
             m = 0
             while (m < longitud_palabra):
                 palabra_temporal[m] = palabra_temporal[m] + 1
