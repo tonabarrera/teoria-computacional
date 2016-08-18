@@ -62,8 +62,3 @@ int abrir_archivo(FILE **archivo) {
     }
     return 1;
 }
-
-int prueba(){
-    printf("%s\n", "Prueba");
-    return 1;
-}
