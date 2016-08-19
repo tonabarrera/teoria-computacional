@@ -4,14 +4,14 @@ import math
 # guardar como binarios
 # contar ceros y unos
 def iniciar():
-    maximo = 1000
+    maximo = 10
     lista_primos = []
     primos_binario = []
     lista_primos = calcular_primos(maximo)
     primos_binario = conversion_binaria(lista_primos)
-    contar_repeticiones(primos_binario)
     print(lista_primos)
     print(primos_binario)
+    contar_repeticiones(primos_binario)
 
 def calcular_primos(maximo):
     lista_primos = []
@@ -43,5 +43,18 @@ def conversion_binaria(lista_primos):
         primos_binario.append(bin(numero)[2:])
 
     return primos_binario
+
+def contar_repeticiones(primos_binario):
+    total = []
+    for valor in primos_binario:
+        ceros, unos = 0, 0
+        for digito in valor:
+            if digito == '0':
+                ceros += 1
+            else:
+                unos += 1
+        total.append({'ceros': ceros, 'unos': unos})
+
+    print(total)
 
 iniciar()
