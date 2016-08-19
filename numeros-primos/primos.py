@@ -9,9 +9,9 @@ def iniciar():
     primos_binario = []
     lista_primos = calcular_primos(maximo)
     primos_binario = conversion_binaria(lista_primos)
+    contar_repeticiones(primos_binario)
     print(lista_primos)
     print(primos_binario)
-    #contar_repeticiones(primos_binario)
 
 def calcular_primos(maximo):
     lista_primos = []
