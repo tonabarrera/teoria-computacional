@@ -1,8 +1,6 @@
 from __future__ import print_function
 import math
-# calcular primos de n para abajo
-# guardar como binarios
-# contar ceros y unos
+
 def iniciar():
     maximo = 10
     lista_primos = []
