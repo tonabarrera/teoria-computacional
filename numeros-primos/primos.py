@@ -1,15 +1,36 @@
+# -*- coding: utf-8 -*-
 from __future__ import print_function
-import math
-
+import math, random
+# El random de maximo debe de ser  1000
 def iniciar():
+    archivo = open('primos.txt', 'a')
     maximo = 10
-    lista_primos = []
-    primos_binario = []
-    lista_primos = calcular_primos(maximo)
-    primos_binario = conversion_binaria(lista_primos)
-    print(lista_primos)
-    print(primos_binario)
-    contar_repeticiones(primos_binario)
+    continuar = True
+
+    while continuar:
+        lista_primos = []
+        lista_binarios = []
+        manual = random_manual_continuar()
+        if manual:
+            maximo = int(input("Escribe un numero entre 1 y 1000 "))
+        else:
+            maximo = random_maximo()
+
+        lista_primos = calcular_primos(maximo)
+        lista_binarios = conversion_binaria(lista_primos, archivo)
+        print(lista_primos)
+        print('*'*20)
+        print(lista_binarios)
+        contar_repeticiones()
+        continuar = random_manual_continuar(lista_binarios)
+
+    archivo.close()
+
+def random_maximo():
+    return random.randint(1, 10)
+
+def random_manual_continuar():
+    return random.choice([True, False])
 
 def calcular_primos(maximo):
     lista_primos = []
@@ -35,16 +56,19 @@ def calcular_primos(maximo):
                     lista_primos.append(numero_actual)
     return lista_primos
 
-def conversion_binaria(lista_primos):
-    primos_binario = []
+def conversion_binaria(lista_primos, archivo):
+    lista_binarios = []
+    archivo.write('{')
     for numero in lista_primos:
-        primos_binario.append(bin(numero)[2:])
+        lista_binarios.append(bin(numero)[2:])
+        archivo.write('%s,' % bin(numero)[2:])
 
-    return primos_binario
+    archivo.write('}')
+    return lista_binarios
 
-def contar_repeticiones(primos_binario):
+def contar_repeticiones(lista_binarios):
     total = []
-    for valor in primos_binario:
+    for valor in lista_binarios:
         ceros, unos = 0, 0
         for digito in valor:
             if digito == '0':
