@@ -9,6 +9,7 @@ static const char ALFABETO[2] = {'0', '1'};
 int iniciar();
 int abrir_archivo(FILE **);
 int generar_palabras();
-int prueba();
+int random_k();
+int random_manual();
 
 #endif

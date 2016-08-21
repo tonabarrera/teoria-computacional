@@ -4,13 +4,30 @@ int iniciar() {
     srand(time(NULL));
     int continuar = 1;
     int maximo = 20;
-    //maximo = 1 + rand() % (1000 + 1 - 1);
+    int manual = 1;
     while(continuar) {
+        //manual = random_manual();
+        if (manual)
+            printf("%s\n", "Ingresa el valor de k");
+            scanf("%d", &maximo);
+        else {
+            //maximo = random_k();
+        }
         generar_palabras(maximo);
         continuar = 0;
         //continuar = rand() % 2;
     }
     return 1;
+}
+
+int random_k() {
+    int k = 1 + rand() % (1000 + 1 - 1);
+    return k;
+}
+
+int random_manual() {
+    int manual = rand() % 2
+    return manual
 }
 
 int generar_palabras(int maximo) {
@@ -47,7 +64,7 @@ int generar_palabras(int maximo) {
                 break;
             }
         }
-        printf("Va en la: %d\n", longitud_palabra);
+        printf("Va en 2^ %d\n", longitud_palabra);
     }
 
     fputs("}", archivo);
