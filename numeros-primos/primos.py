@@ -21,8 +21,8 @@ def iniciar():
         print(lista_primos)
         print('*'*20)
         print(lista_binarios)
-        contar_repeticiones()
-        continuar = random_manual_continuar(lista_binarios)
+        contar_repeticiones(lista_binarios, lista_primos)
+        continuar = random_manual_continuar()
 
     archivo.close()
 
@@ -66,8 +66,9 @@ def conversion_binaria(lista_primos, archivo):
     archivo.write('}')
     return lista_binarios
 
-def contar_repeticiones(lista_binarios):
+def contar_repeticiones(lista_binarios, lista_primos):
     total = []
+    i = 0
     for valor in lista_binarios:
         ceros, unos = 0, 0
         for digito in valor:
@@ -75,7 +76,8 @@ def contar_repeticiones(lista_binarios):
                 ceros += 1
             else:
                 unos += 1
-        total.append({'ceros': ceros, 'unos': unos})
+        total.append({'Numero': lista_primos[i], 'ceros': ceros, 'unos': unos})
+        i += 1
 
     print(total)
 
