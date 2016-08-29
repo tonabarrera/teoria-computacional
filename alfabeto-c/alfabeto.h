@@ -10,6 +10,6 @@ int iniciar();
 int abrir_archivo(FILE **);
 int generar_palabras();
 int random_k();
-int random_manual();
+int random_manual_continuar();
 
 #endif

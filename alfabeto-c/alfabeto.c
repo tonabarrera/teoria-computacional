@@ -6,7 +6,7 @@ int iniciar() {
     int maximo = 20;
     int manual = 1;
     while(continuar) {
-        manual = random_manual();
+        manual = random_manual_continuar();
         if (manual) {
             printf("%s\n", "Ingresa el valor de k.");
             scanf("%d", &maximo);
@@ -14,8 +14,7 @@ int iniciar() {
             maximo = random_k();
         }
         generar_palabras(maximo);
-        continuar = 0;
-        continuar = rand() % 2;
+        continuar = random_manual_continuar();
     }
     return 1;
 }
@@ -25,9 +24,8 @@ int random_k() {
     return k;
 }
 
-int random_manual() {
-    int manual = rand() % 2;
-    return manual;
+int random_manual_continuar() {
+    return (rand() % 2);
 }
 
 int generar_palabras(int maximo) {
