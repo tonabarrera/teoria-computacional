@@ -25,8 +25,10 @@ def estado_cero(simbolo):
         return 0
 
 def estado1(caracter):
-    if simbolo == 'r'
+    if simbolo == 'r':
         return 2
+    elif simbolo == 'e':
+        return 1
     else:
         return 0
 
