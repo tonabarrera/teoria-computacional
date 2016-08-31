@@ -29,7 +29,6 @@ def automata(texto):
                 estado = 0
             palabra_aux = ''
 
-
     return palabras_ere
 
 def estado_cero(simbolo):
