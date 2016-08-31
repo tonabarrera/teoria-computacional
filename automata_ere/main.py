@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+from automata_ere import automata
 
 def iniciar():
-    continuar = 1
-    while continuar == 1:
+    continuar = True
+    while continuar:
         print("""
             1.- Entrada en consola
             2.- Ingresar nombre del archivo
@@ -11,8 +12,6 @@ def iniciar():
         opcion = int(input("Selecciona una opcion: "))
         if opcion == 1:
             texto = input("Escribe el texto: ")
-            type(texto)
-            print(texto)
             entrada_consola(texto)
         elif opcion == 2:
             archivo = input("Ingresa el nombre del archivo: ")
@@ -20,14 +19,31 @@ def iniciar():
         else:
             print("Error")
             continuar = False
-        continuar = int(input("Reintentar 1=si 0=no"))
+        opcion = input("Reintentar s/n: ")
+        if opcion.lower() != 's':
+            continuar = False
 
 
 def entrada_consola(texto):
-    for x in texto:
-        if (ord(x)<123 and ord(x) > 96):
-            estado = estados_automata()
-        else:
-            print("no es ", x)
+    texto += ' '
+    palabras_ere = automata(texto)
+    print(palabras_ere)
+
+def entrada_archivo(archivo):
+    archivo_abierto = open(archivo, 'r')
+    linea_palabras = []
+    num_linea = 0
+    palabras_ere = []
+    for linea in archivo_abierto.read().split('\n'):
+        linea += ' '
+        palabras_ere = automata(linea)
+        linea_palabras.append({'Numero linea': num_linea, 'Palabras': palabras_ere})
+        num_linea += 1
+
+    imprimir_archivo(linea_palabras)
+
+def imprimir_archivo(linea_palabras):
+    print(linea_palabras)
+
 
 iniciar()
