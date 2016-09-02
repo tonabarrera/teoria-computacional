@@ -12,6 +12,8 @@ def iniciar():
         elif opcion == 2:
             archivo = input("Ingresa el nombre del archivo: ")
             entrada_archivo(archivo)
+        elif opcion == 3:
+            print('Aqui va el grafico')
         else:
             print("Error")
             return 0
@@ -25,6 +27,7 @@ def imprimir_menu():
     print("""
         1.- Entrada en consola
         2.- Ingresar nombre del archivo
+        3.- Ver diagrama de estados
     """)
     opcion = int(input("Selecciona una opcion: "))
 

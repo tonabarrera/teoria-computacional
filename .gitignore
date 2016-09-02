@@ -1,4 +1,6 @@
-*.txt
+/*/*.txt
+!/automata_ere/*.txt
+
 # Object files
 *.o
 *.ko
