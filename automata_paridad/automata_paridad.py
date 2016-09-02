@@ -1,7 +1,7 @@
 def automa(entrada):
     estado = 0
     for simbolo in entrada:
-        print('Estado: q%s Simbolo: %s ' % estado, simbolo, end = '->')
+        print('-> delta(%s, %s)' % (estado, simbolo), end="\t")
         if estado == 0:
             estado = estado_cero(simbolo)
         elif estado == 1:
