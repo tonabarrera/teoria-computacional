@@ -49,7 +49,7 @@ def entrada_archivo(archivo):
         palabras_ere = automata(linea)
         linea_palabras.append({'Linea': num_linea, 'Palabras': palabras_ere})
         num_linea += 1
-
+    archivo_abierto.close()
     imprimir_archivo(linea_palabras)
 
 def imprimir_archivo(linea_palabras):
