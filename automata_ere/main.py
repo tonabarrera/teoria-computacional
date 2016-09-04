@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from automata_ere import automata
+from diagrama import Diagrama
 
 def iniciar():
     continuar = True
@@ -13,7 +14,7 @@ def iniciar():
             archivo = input("Ingresa el nombre del archivo: ")
             entrada_archivo(archivo)
         elif opcion == 3:
-            print('Aqui va el grafico')
+            ver_diagrama()
         else:
             print("Error")
             return 0
@@ -57,6 +58,15 @@ def imprimir_archivo(linea_palabras):
     for elemento in linea_palabras:
         if len(elemento['Palabras'])>0:
             print('Numero de linea: %s Palabras encontradas %s' % (elemento['Linea'], elemento['Palabras']))
+
+def ver_diagrama():
+    print('Mostrando diagrama del automata. Cierre la ventana para continuar')
+    try:
+        diagrama_ere = Diagrama()
+        diagrama_ere.master.title('Diagrama del automata ere')
+        diagrama_ere.mainloop()
+    except Exception as e:
+        print("Error", e)
 
 
 iniciar()
