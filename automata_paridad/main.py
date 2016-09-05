@@ -1,15 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from automata_paridad import ejecutar_automata
+from diagrama import Diagrama
 import random
-# >>> import pdb
-# >>> a="a string"
-# >>> pdb.set_trace()
-# --Return--
-# > <stdin>(1)<module>()->None
-# (Pdb) p a
-# 'a string'
-# (Pdb) To continue execution use c (or cont or continue).
 def iniciar():
     continuar = True
     while continuar:
@@ -19,7 +12,7 @@ def iniciar():
         elif opcion == 2:
             ejecutar_random()
         elif opcion == 3:
-            print('Aqui va el grafico')
+            ver_diagrama()
         else:
             print("Error")
             return 0
@@ -64,5 +57,14 @@ def provar_paridad(numero_binario):
         print('El numero %s, es valido' % numero_binario)
     else:
         print('El numero: %s, no es valido' % numero_binario)
+
+def ver_diagrama():
+    print('Mostrando diagrama del automata. Cierre la ventana para continuar')
+    try:
+        diagrama_paridad = Diagrama()
+        diagrama_paridad.master.title('Diagrama del automata ere')
+        diagrama_paridad.mainloop()
+    except Exception as e:
+        print("Error", e)
 
 iniciar()

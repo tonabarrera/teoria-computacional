@@ -8,11 +8,7 @@ class Diagrama(tk.Frame):
         self.pack(fill=tk.BOTH, expand=tk.YES)
         self.dibujarDiagrama()
         self.centrarVentana()
-
-    # def iniciar_UI(self):
-    #     self.quit = tk.Button(self, text="Salir", fg="red", command=root.destroy)
-    #     self.quit.pack(side="top")
-
+        
     def dibujarDiagrama(self):
         canvas = tk.Canvas(self, bg='white')
         datos = {}
