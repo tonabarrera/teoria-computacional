@@ -1,26 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-def automata(texto):
+def verificar_palabras(texto, palabras_ere, posiciones = []):
     palabra_aux = ''
     estado = 0
-    palabras_ere = []
-
-
+    num_palabra = 1
     for simbolo in texto:
         simbolo_aux = simbolo.lower()
-        print('-> delta(%s, %s)' % (estado, simbolo), end="\t")
+        if simbolo ==  '\n':
+            simbolo = '\\n'
+        print('-> delta(%s,%s)' % (estado, simbolo), end="\t")
 
-        if estado == 0:
-            estado = estado_cero(simbolo)
-        elif estado == 1:
-            estado = estado_uno(simbolo)
-        elif estado == 2:
-            estado = estado_dos(simbolo)
-        elif estado == 3:
-            estado = estado_tres(simbolo)
-        else:
-            print('Hay que ver que procede', simbolo)
+        estado = automata(estado, simbolo_aux)
 
         if (ord(simbolo_aux) < 123 and ord(simbolo_aux) > 96):
             palabra_aux += simbolo
@@ -29,10 +20,25 @@ def automata(texto):
         else:
             if estado == 4:
                 palabras_ere.append(palabra_aux)
+                posiciones.append(num_palabra)
                 estado = 0
             palabra_aux = ''
+            if simbolo == ' ':
+                num_palabra += 1
 
-    return palabras_ere
+def automata(estado, simbolo):
+    if estado == 0:
+        estado = estado_cero(simbolo)
+    elif estado == 1:
+        estado = estado_uno(simbolo)
+    elif estado == 2:
+        estado = estado_dos(simbolo)
+    elif estado == 3:
+        estado = estado_tres(simbolo)
+    else:
+        print('Simbolo extraño: ', simbolo)
+
+    return estado
 
 def estado_cero(simbolo):
     if simbolo == 'e':

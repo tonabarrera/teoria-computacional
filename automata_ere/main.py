@@ -1,63 +1,83 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from automata_ere import automata
+from automata_ere import verificar_palabras
 from diagrama import Diagrama
+
+separador = '*'*50
 
 def iniciar():
     continuar = True
     while continuar:
         opcion = imprimir_menu()
         if opcion == 1:
-            texto = input("Escribe el texto: ")
-            entrada_consola(texto)
+            entrada_consola()
         elif opcion == 2:
-            archivo = input("Ingresa el nombre del archivo: ")
-            entrada_archivo(archivo)
+            entrada_archivo()
         elif opcion == 3:
             ver_diagrama()
         else:
-            print("Error")
-            return 0
-        print('*' * 50)
+            break # Sal del programa
+        print('*' * 100)
         opcion = input("Reintentar s/n: ")
         if opcion.lower() != 's':
             continuar = False
 
+    print('Saliendo del programa...')
+
 def imprimir_menu():
-    print('\n\n**********Menu**********')
+    print("""Es importante mencionar que en este programa cualquier simbolo que no sea una letra en el alfabeto inglés separa una palabra de otra""")
+    print('\n\n%sMenu%s' % (separador, separador))
     print("""
         1.- Entrada en consola
         2.- Ingresar nombre del archivo
         3.- Ver diagrama de estados
+        4.- Salir
     """)
-    opcion = int(input("Selecciona una opcion: "))
+    try:
+        opcion = int(input("Selecciona una opcion valida: "))
+        return opcion
+    except Exception as e:
+        print('Error ', e)
+        return 0
 
-    return opcion
-
-def entrada_consola(texto):
+def entrada_consola():
+    texto = input("Escribe el texto: ")
     texto += ' '
-    palabras_ere = automata(texto)
-    print()
-    print(palabras_ere)
+    palabras_ere = []
+    verificar_palabras(texto, palabras_ere)
+    print('\n', palabras_ere)
 
-def entrada_archivo(archivo):
-    archivo_abierto = open(archivo, 'r')
+def entrada_archivo():
+    archivo = input("Ingresa el nombre del archivo: ")
+    try:
+        archivo_abierto = open(archivo, 'r')
+    except Exception as e:
+        print('Error al abrir archivo: ', e)
+        return 0
+
     linea_palabras = []
     num_linea = 1
     palabras_ere = []
-    for linea in archivo_abierto.read().split('\n'):
-        linea += ' '
-        palabras_ere = automata(linea)
-        linea_palabras.append({'Linea': num_linea, 'Palabras': palabras_ere})
+    posiciones = []
+    for linea in archivo_abierto:
+        verificar_palabras(linea, palabras_ere, posiciones)
+        linea_palabras.append({'Linea': num_linea, 'Palabras': palabras_ere, 'Posiciones': posiciones})
         num_linea += 1
-    archivo_abierto.close()
+        palabras_ere = []
+        posiciones = []
+
     imprimir_archivo(linea_palabras)
+    archivo_abierto.close()
 
 def imprimir_archivo(linea_palabras):
     print('\n\n')
     for elemento in linea_palabras:
-        if len(elemento['Palabras'])>0:
-            print('Numero de linea: %s Palabras encontradas %s' % (elemento['Linea'], elemento['Palabras']))
+        if len(elemento['Palabras']) > 0:
+            print('Numero de linea: ', elemento['Linea'])
+            i = 0
+            for palabra in elemento['Palabras']:
+                print('\tPalabra: %s No. Palabra: %s' % (palabra, elemento['Posiciones'][i]))
+                i += 1
 
 def ver_diagrama():
     print('Mostrando diagrama del automata. Cierre la ventana para continuar')
@@ -67,6 +87,5 @@ def ver_diagrama():
         diagrama_ere.mainloop()
     except Exception as e:
         print("Error", e)
-
 
 iniciar()

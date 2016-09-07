@@ -3,6 +3,8 @@ from __future__ import print_function
 from automata_paridad import ejecutar_automata
 from diagrama import Diagrama
 import random
+
+separador = '*' * 50
 def iniciar():
     continuar = True
     while continuar:
@@ -14,40 +16,42 @@ def iniciar():
         elif opcion == 3:
             ver_diagrama()
         else:
-            print("Error")
-            return 0
-        print('\n')
-        print('*' * 50)
+            break
+        print('\n', separador)
         opcion = input("Reintentar s/n: ")
         if opcion.lower() != 's':
             continuar = False
 
+    print('Saliendo del programa...')
+
 def imprimir_menu():
-    print('\n\n**********Menu**********')
+    print('\n\n%sMenu%s' % (separador, separador))
     print("""
         1.- Entrada en consola
         2.- Random
         3.- Ver diagrama de estados
+        4.- Salir
     """)
-    opcion = int(input("Selecciona una opcion: "))
-
-    return opcion
+    try:
+        opcion = int(input("Selecciona una opcion valida: "))
+        return opcion
+    except Exception as e:
+        print('Error ', e)
+        return 0
 
 def ejecutar_random():
     i = 0
-    longitud_random = random.randint(1, 10)
+    longitud_random = random.randint(1, 100)
     numero_binario = ''
     while i < longitud_random:
         numero_binario += random.choice(['0', '1'])
         i += 1
 
     print("El numero aleatorio es: ", numero_binario)
-    numero_binario += ' '
     provar_paridad(numero_binario)
 
 def ejecutar_manual():
     numero_binario = input("Escribe un numero binario: ")
-    numero_binario += ' '
     provar_paridad(numero_binario)
 
 def provar_paridad(numero_binario):
