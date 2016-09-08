@@ -40,12 +40,12 @@ def verificar_cadenas(archivo, palabras):
         if simbolo == ' ':
             if estado == 0:
                 palabras.append(palabra_aux)
-                palabra_aux = ''
+            palabra_aux = ''
         else:
             palabra_aux += simbolo
             estado = automata(estado, simbolo)
 
-# 00 11
+#001 11
 def automata(estado, simbolo):
     if estado == 0:
         estado = estado_cero(simbolo)
