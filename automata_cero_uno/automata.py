@@ -12,27 +12,39 @@ def automata(text):
     for simbolo in text:
         array = array_tabla[i]
         for estado_evaluacion in array:
-            print('simbolo %s, estado %s' % (simbolo, estado_evaluacion))
             if simbolo == '0' and estado_evaluacion == '0':
                 temporal_cero = evaluar_estados(estado_evaluacion, simbolo)
-                print('temporal_cero', temporal_cero)
             else:
                 temporal_otro.append(evaluar_estados(estado_evaluacion, simbolo))
-                print('temporal_otro', temporal_otro)
 
-
-        temporal += temporal_cero[:]
-        temporal += temporal_otro[:]
-        print('otro ', temporal_otro)
-        print('cero', temporal_cero)
+        if(len(temporal_cero) != 0):
+            temporal.append(temporal_cero[0])
+            temporal += temporal_otro[:]
+            temporal.append(temporal_cero[1])
+        else:
+            temporal += temporal_cero[:]
+            temporal += temporal_otro[:]
         array_tabla.append(temporal[:])
-        print('tabla: ', array_tabla)
         temporal_cero = []
         temporal_otro = []
         temporal = []
         i += 1
 
-    print(array_tabla)
+    rellenar_tabla(array_tabla, text)
+    for linea in array_tabla:
+        print(linea)
+
+    if array_tabla[len(text)][len(array_tabla[len(text)])-1] == '2':
+        print('Paso')
+
+def rellenar_tabla(array_tabla, text):
+    longitud = len(text)
+    ultima_fila = len(array_tabla[longitud])
+    for fila in array_tabla:
+        while True:
+            if len(fila) >= ultima_fila:
+                break
+            fila.append('-1')
 
 def evaluar_estados(estado, simbolo):
     if estado == '0':
