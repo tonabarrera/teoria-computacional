@@ -5,11 +5,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-static const char ALFABETO[2] = {'0', '1'};
+static const int CONTINUAR = 1;
 int iniciar();
 int abrir_archivo(FILE **);
 int generar_palabras();
-int random_k();
-int random_manual_continuar();
 
 #endif

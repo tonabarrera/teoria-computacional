@@ -1,70 +1,42 @@
 #include "alfabeto.h"
-// Cambiar el valor del random k a 1000
-int iniciar() {
-    srand(time(NULL));
-    int continuar = 1;
-    int maximo = 20;
-    int manual = 1;
-    while(continuar) {
-        manual = random_manual_continuar();
-        if (manual) {
-            printf("%s\n", "Ingresa el valor de k.");
-            scanf("%d", &maximo);
-        } else {
-            maximo = random_k();
-        }
-        generar_palabras(maximo);
-        continuar = random_manual_continuar();
-    }
-    return 1;
-}
 
-int random_k() {
-    int k = 1 + rand() % (2 + 1 - 1);
-    return k;
-}
-
-int random_manual_continuar() {
-    return (rand() % 2);
-}
-
-int generar_palabras(int maximo) {
+int generar_palabras(int potencia_k) {
     FILE *archivo = NULL;
-    int k = maximo;
-    int longitud_palabra;
+    int long_cadena;
     int j;
-    int m;
-    int continuar = 1;
-    int *palabra_temporal = NULL;
+    int posicion;
+    int *cadena_aux = NULL;
 
     abrir_archivo(&archivo);
     fputs("S = {e", archivo);
 
-    for (longitud_palabra = 1; longitud_palabra <= k; longitud_palabra++) {
-        palabra_temporal = (int*) calloc(longitud_palabra, sizeof(int));
-        if(palabra_temporal == NULL) {
+    for (long_cadena = 1; long_cadena <= potencia_k; long_cadena++) {
+        cadena_aux = (int*) calloc(long_cadena, sizeof(int));
+        if(cadena_aux == NULL) {
             printf("%s\n", "Error en el calloc");
             exit(0);
         }
-        while(continuar) {
+        while(CONTINUAR) {
             fputc(',', archivo);
-            for(j = 0; j < longitud_palabra; j++) {//2 //00
-                fputc(ALFABETO[palabra_temporal[j]], archivo);
+            for(j = 0; j < long_cadena; j++) {//2 //00
+                printf("%d", cadena_aux[j]);
+                fputc(cadena_aux[j] + '0', archivo);
             }
-            for(m = 0; m < longitud_palabra; m++) {
-                palabra_temporal[m] += 1;
-                if(palabra_temporal[m] > 1) {
-                    palabra_temporal[m] = 0;
+            printf("\n");
+            for(posicion = 0; posicion < long_cadena; posicion++) {
+                cadena_aux[posicion] += 1;
+                if(cadena_aux[posicion] > 1) {
+                    cadena_aux[posicion] = 0;
                 } else {
                     break;
                 }
             }
-            if(m >= longitud_palabra) {
-                free(palabra_temporal);
+            if(posicion >= long_cadena) {
+                free(cadena_aux);
                 break;
             }
         }
-        printf("Va en 2^%d\n", longitud_palabra);
+        printf("Va en 2^%d\n", long_cadena);
     }
 
     fputs("}", archivo);
