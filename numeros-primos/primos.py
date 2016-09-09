@@ -69,6 +69,7 @@ def conversion_binaria(lista_primos, archivo):
 def contar_repeticiones(lista_binarios, lista_primos):
     total = []
     i = 0
+    data = open('data.txt', 'w')
     for valor in lista_binarios:
         ceros, unos = 0, 0
         for digito in valor:
@@ -78,8 +79,10 @@ def contar_repeticiones(lista_binarios, lista_primos):
                 unos += 1
         total.append({'Numero': lista_primos[i], 'Ceros': ceros, 'Unos': unos})
         i += 1
-
     for numero in total:
         print('Numero: %s No. Ceros: %s No. Unos: %s' % (numero['Numero'], numero['Ceros'], numero['Unos']))
+        data.write("['%s', %s, %s]," %(numero['Numero'], numero['Ceros'], numero['Unos']))
+
+    data.close()
 
 iniciar()
