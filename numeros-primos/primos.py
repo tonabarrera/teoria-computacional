@@ -19,7 +19,7 @@ def iniciar():
         lista_primos = calcular_primos(maximo)
         lista_binarios = conversion_binaria(lista_primos, archivo)
         print(lista_primos)
-        print('*'*20)
+        print('*'*50)
         print(lista_binarios)
         contar_repeticiones(lista_binarios, lista_primos)
         continuar = random_manual_continuar()
@@ -27,7 +27,7 @@ def iniciar():
     archivo.close()
 
 def random_maximo():
-    return random.randint(1, 10)
+    return random.randint(1, 100)
 
 def random_manual_continuar():
     return random.choice([True, False])
@@ -76,9 +76,10 @@ def contar_repeticiones(lista_binarios, lista_primos):
                 ceros += 1
             else:
                 unos += 1
-        total.append({'Numero': lista_primos[i], 'ceros': ceros, 'unos': unos})
+        total.append({'Numero': lista_primos[i], 'Ceros': ceros, 'Unos': unos})
         i += 1
 
-    print(total)
+    for numero in total:
+        print('Numero: %s No. Ceros: %s No. Unos: %s' % (numero['Numero'], numero['Ceros'], numero['Unos']))
 
 iniciar()

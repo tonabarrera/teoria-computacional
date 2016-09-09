@@ -3,7 +3,7 @@
 int generar_palabras(int potencia_k) {
     FILE *archivo = NULL;
     int long_cadena;
-    int j;
+    int i;
     int posicion;
     int *cadena_aux = NULL;
 
@@ -18,9 +18,9 @@ int generar_palabras(int potencia_k) {
         }
         while(CONTINUAR) {
             fputc(',', archivo);
-            for(j = 0; j < long_cadena; j++) {//2 //00
-                printf("%d", cadena_aux[j]);
-                fputc(cadena_aux[j] + '0', archivo);
+            for(i = 0; i < long_cadena; i++) {//2 //00
+                printf("%d", cadena_aux[i]);
+                fputc(cadena_aux[i] + '0', archivo);
             }
             printf("\n");
             for(posicion = 0; posicion < long_cadena; posicion++) {
