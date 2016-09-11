@@ -37,7 +37,7 @@ def iniciar():
     print('Saliendo...')
 
 def random_maximo():
-    return random.randint(1, 100)
+    return random.randint(1, 1000)
 
 def calcular_primos(maximo):
     lista_primos = []
@@ -90,7 +90,6 @@ def conversion_binaria(lista_primos, archivo):
 def contar_repeticiones(lista_binarios, lista_primos):
     total = []
     i = 0
-    data = open('data.txt', 'w')
     for valor in lista_binarios:
         ceros, unos = 0, 0
         for digito in valor:
@@ -102,8 +101,5 @@ def contar_repeticiones(lista_binarios, lista_primos):
         i += 1
     for numero in total:
         print('Numero: %s No. Ceros: %s No. Unos: %s' % (numero['Numero'], numero['Ceros'], numero['Unos']))
-        data.write("['%s', %s, %s]," %(numero['Numero'], numero['Ceros'], numero['Unos']))
-
-    data.close()
 
 iniciar()
