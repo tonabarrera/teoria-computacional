@@ -3,6 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage[letterpaper, margin=2.5cm]{geometry}
 \usepackage{lipsum}
+\usepackage{amsmath} 
 \title{Reporte}
 \author{Carlos Tonatihu Barrera Pérez}
 \date{9 de septiembre de 2016}
@@ -12,37 +13,78 @@
 	\newpage
 	
 	\section{Alfabeto}
-	Un alfabeto es un conjunto de símbolos finito y no vacío. Convencionalmente, utilizamos el símbolo $ \sum $ para designar un alfabeto. \cite{LIBRO}
 	\subsection{Descripción del problema}
-	El objetivo de esta practica es el generar las potencias del alfabeto binario $ \sum = \lbrace 0, 1 \rbrace $ desde k=0 hasta k = 1000, para después imprimir en un archivo todas las cadenas que se pudieron formar bajo estas condiciones, es decir: 
+	El objetivo de esta practica es el generar las potencias del alfabeto binario $ \sum = \lbrace 0, 1 \rbrace $ desde $k=0$ hasta un $k$ seleccionado con un máximo de $k=1000$, para después guardar en un archivo todas las cadenas que se pudieron formar bajo estas condiciones, es decir: 
 	\[{\sum}^{+} = {\sum}^{0}\cup{\sum}^{1}\cup{\sum}^{2}\cup\cdots\cup{\sum}^{1000}\]
-	Es importante señalar que este conjunto solo es un subconjunto de $ {\sum}^{*} $ que representa todas las cadenas que se pueden formar con este alfabeto binario .
+	Es importante señalar que este conjunto solo es un subconjunto de $ {\sum}^{*} $ que representa todas las cadenas que se pueden formar con este alfabeto binario.
+	El programa cuenta con modo manual (el usuario ingresa un $k$) y automático (genera su propio $k$).
 	\subsection{Código}
-	Para programar este ejercicio se opto por C ya que nos brinda una gran velocidad a la hora de realizar las operaciones que esta practica demanda.
+	El código del programa fue realizado en C.
 	\subsection{Pruebas}
-	Las pruebas están divididas en modo automático y manual, en ambos dado una k se generan todas las cadenas de longitud 1 hasta k.
+	Las pruebas están divididas en modo automático y manual, en ambos dada una k se generan todas las cadenas de longitud 1 hasta $k$.
 	{\large Modo automático.}
 	{\large Modo manual.}
 	
 	\section{Números primos}
-	\lipsum[1]
 	\subsection{Descripción del problema}
-	\lipsum[1]
+	Desarrollar un programa que encuentre todos los números primos en el intervalo $0 \leq n \leq 1000$ imprimirlos en pantalla junto con su representación en binario ademas de contar la cantidad de ceros y unos en dicho numero, finalmente guarda los números primos en su forma binaria en un archivo txt.
+	Cuenta con modo manual (el usuario ingresa un numero n) y automático (el programa utiliza un $n$ aleatorio).
 	\subsection{Código}
-	\lipsum[1]
+	El código del programa fue realizado en Python 3.5.
 	\subsection{Pruebas}
-	\lipsum[1]
+	Las pruebas están divididas en modo automático y manual.
+	{\large Modo automático.}
+	{\large Modo manual.}
 	
 	\section{AFD Palabras con terminación 'ere'}
-	\lipsum[1]
 	\subsection{Descripción del problema}
-	\lipsum[1]
-	\subsection{Diagrama de estados}
-	\lipsum[1]
+	Desarrollar un autómata finito determinista capaz de encontrar las palabras con terminación 'ere' ya sea leyendo un archivo txt o en una linea de texto que el usuario ingresa, y que dichas palabras se muestren en pantalla y en el caso del archivo de texto imprimir la linea y el numero de palabra (por linea) en el que fue encontrada dicha palabra.
+	Es importante señalar que todo aquello que no es un símbolo del alfabeto ingles, $ \sum =\lbrace a, b, ..., z, A, B, ..., Z \rbrace $, es tomado como un espacio. Además, debe tener una opción para visualizar el siguiente diagrama.
+	Representación del autómata en un diagrama de transiciones.
 	\subsection{Código}
-	\lipsum[1]
+	El código fue realizado en Python 3.5.
 	\subsection{Pruebas}
-	\lipsum[1]
+	Pruebas de las opciones del menú.
+	{\large Modo automático.}
+	{\large Modo manual.}
+	{\large Diagrama.}
+	
+	\section{AFD Paridad en números binarios}
+	\subsection{Descripción del problema}
+	Diseñar y programar un autómata finito determinista que acepte el lenguaje:
+	\[ L = \lbrace w \mid w \text{ tiene un número par de ceros y un numero par de unos} \rbrace \text{\cite{LIBRO}}\] 
+	Es decir, los números binarios de entrada se generan de manera automática (cadena de longitud $n \mid 1\leq n \leq 1000$) o manual y después se imprime si es una cadena valida o no y en ambos casos imprimir su historia. Ademas, mostrar el siguiente diagrama.
+	Representación del autómata en un diagrama de transiciones. \cite{LIBRO}
+	\subsection{Código}
+	El código fue realizado en Python 3.5.
+	\subsection{Pruebas}
+	Pruebas de las opciones del menú.
+	{\large Modo automático.}
+	{\large Modo manual.}
+	{\large Diagrama.}
+	
+	\section{Protocolo de transmisión}
+	\subsection{Descripción del problema}
+	Desarrollar un programa que genere 50 cadenas de 32 caracteres que sean guardadas en un archivo, para después ser evaluadas por un autómata, en este caso el autómata de paridad binaria y guardar las cadenas binarias en otro archivo, siguiendo el siguiente diagrama.
+	Representación del autómata en un diagrama de transiciones. \cite{WEB}
+	\subsection{Código}
+	El código fue realizado en Python 3.5.
+	\subsection{Pruebas}
+	Pruebas de las opciones del menú.
+	{\large Modo automático.}
+	{\large Diagrama.}
+	
+	\section{AFND Números binarios con terminación '01'}
+	\subsection{Descripción del problema}
+	Desarrollar un autómata finito no determinista, que acepte todas y sólo las cadenas formadas por ceros y unos que terminan en 01. Asimismo, imprimir la tabla de transiciones (historia) y que la entrada de cadenas sea de forma manual o automática, la cadena automática debe de tener una longitud $n \mid 1  \leq n \leq 1000$. Y que contenga la opción de mostrar el siguiente diagrama.
+	Diagrama de transiciones del autómata. \cite{LIBRO}
+	\subsection{Código}
+	El código fue realizado en Python 3.5.
+	\subsection{Pruebas}
+	Pruebas de las opciones del menú.
+	{\large Modo automático.}
+	{\large Modo manual.}
+	{\large Diagrama.}
 	
 	\bibliography{bibliografia} 
 	\bibliographystyle{ieeetr}
