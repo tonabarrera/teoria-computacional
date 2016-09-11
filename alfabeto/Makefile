@@ -1,5 +1,5 @@
-run:a.out
-	./a.out
+run:a.exe
+	./a.exe
 a.out:main.o alfabeto.o
 	gcc main.o alfabeto.o
 main.o:main.c
