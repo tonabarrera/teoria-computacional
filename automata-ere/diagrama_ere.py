@@ -1,3 +1,4 @@
+#diagrama_ere.py
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import tkinter as tk

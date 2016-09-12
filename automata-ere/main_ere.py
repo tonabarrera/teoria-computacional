@@ -1,7 +1,8 @@
+#main_ere.py
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from automata_ere import verificar_palabras
-from diagrama import Diagrama
+from diagrama_ere import Diagrama
 
 separador = '*'*50
 
