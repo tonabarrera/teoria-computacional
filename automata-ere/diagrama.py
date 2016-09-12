@@ -8,7 +8,7 @@ class Diagrama(tk.Frame):
         self.pack(fill=tk.BOTH, expand=tk.YES)
         self.dibujarDiagrama()
         self.centrarVentana()
-        
+
     def dibujarDiagrama(self):
         canvas = tk.Canvas(self, bg='white')
         datos = {}
@@ -48,7 +48,6 @@ class Diagrama(tk.Frame):
             coordenadas[0] += 150
             coordenadas[2] += 150
 
-        print('cordenada', coordenadas[0])
         self.dibujarCirculo(canvas, [coordenadas[0]-150+5, 105, coordenadas[2]-155, 195]) # circulo interior
 
     def escribirTexto(self, canvas, x, coordenadas):

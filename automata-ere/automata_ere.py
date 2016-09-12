@@ -9,7 +9,7 @@ def verificar_palabras(texto, palabras_ere, posiciones = []):
         simbolo_aux = simbolo.lower()
         if simbolo ==  '\n':
             simbolo = '\\n'
-        print('-> delta(%s,%s)' % (estado, simbolo), end="\t")
+        print('-> delta(q%s,%s)' % (estado, simbolo), end="\t")
 
         estado = automata(estado, simbolo_aux)
 

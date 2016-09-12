@@ -16,7 +16,7 @@ def iniciar():
         elif opcion == 3:
             ver_diagrama()
         else:
-            break # Sal del programa
+            break
         print('*' * 100)
         opcion = input("Reintentar s/n: ")
         if opcion.lower() != 's':
