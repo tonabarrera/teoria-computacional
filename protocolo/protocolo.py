@@ -1,3 +1,4 @@
+#protocolo.py
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import time, random
@@ -14,7 +15,7 @@ def generar_cadenas(archivo):
     LONGITUD = 32
     numero_binario = ''
 
-    for x in range(5):
+    for x in range(50):
         while i < LONGITUD:
             numero_binario += random.choice(['0', '1'])
             i += 1
@@ -35,12 +36,13 @@ def verificar_cadenas(archivo, palabras):
     estado = 0
     palabra_aux = ''
     for simbolo in texto:
-        print('-> delta(%s,%s)' % (estado, simbolo), end="\t")
+        print('-> delta(q%s,%s)' % (estado, simbolo), end="\t")
 
         if simbolo == ' ':
             if estado == 0:
                 palabras.append(palabra_aux)
             palabra_aux = ''
+            estado = 0
         else:
             palabra_aux += simbolo
             estado = automata(estado, simbolo)

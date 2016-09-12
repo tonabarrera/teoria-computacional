@@ -1,6 +1,7 @@
+#main_protocolo.py
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from diagrama import Diagrama
+from diagrama_protocolo import Diagrama
 from protocolo import generar_cadenas, pausar_protocolo, verificar_cadenas
 import random
 
@@ -26,8 +27,8 @@ def iniciar():
 def imprimir_menu():
     print('\n\n%sMenu%s' % (separador, separador))
     print("""
-        1.- Correr protocolo automatico
-        2.- Ver diagrama de estados
+        1.- Correr protocolo
+        2.- Ver diagrama
         3.- Salir
     """)
     try:
@@ -41,10 +42,10 @@ def correr_protocolo():
     condicion = True
     ARCHIVO_PALABRAS = 'palabras.txt'
     ARCHIVO_PALABRAS_VALIDAS = 'validas.txt'
-    TIEMPO_PAUSA = 1
+    TIEMPO_PAUSA = 2
     palabras = []
-    archivo = open('validas.txt', 'a')
     while condicion:
+        archivo = open('validas.txt', 'w')
         print('\nGenerando cadenas...')
         generar_cadenas(ARCHIVO_PALABRAS)
         print('\nEnviando las candenas...')
@@ -53,16 +54,18 @@ def correr_protocolo():
         verificar_cadenas(ARCHIVO_PALABRAS, palabras)
         print('\nRegresando las candenas...')
         print('\nPalabras validas: ', palabras)
-        archivo.write(str(palabras)) # Tal vez necesite separar
+        for palabra in palabras:
+            archivo.write(palabra)
+            archivo.write(' ')
         palabras = []
         condicion = random.choice([True, False])
-    archivo.close()
+        archivo.close()
 
 def ver_diagrama():
     print('Mostrando diagrama del automata. Cierre la ventana para continuar')
     try:
         diagrama_ere = Diagrama()
-        diagrama_ere.master.title('Diagrama del automata ere')
+        diagrama_ere.master.title('Diagrama del protocolo')
         diagrama_ere.mainloop()
     except Exception as e:
         print("Error", e)

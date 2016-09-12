@@ -1,3 +1,4 @@
+#diagrama_protocolo.py
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import tkinter as tk
@@ -32,10 +33,10 @@ class Diagrama(tk.Frame):
         text = ''
         text_flecha =''
         if x == 0:
-            text = 'q%s' %x
+            text = 'Listo'
             text_flecha = 'Inicio'
         elif x == 1:
-            text = 'q%s' %x
+            text = 'Enviando'
             text_flecha = 'Entrada'
         else:
             print('otro')
