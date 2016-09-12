@@ -1,3 +1,4 @@
+#automata_cero_uno.py
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
@@ -31,20 +32,38 @@ def automata(text):
         i += 1
 
     rellenar_tabla(array_tabla, text)
+    letra = 0
+    text +=' '
+    print('')
     for linea in array_tabla:
-        print(linea)
+        print(text[letra], end=' | ')
+        for valor in linea:
+            if(valor == '-1'):
+                print("x", end=' ')
+            else:
+                print("q%s" %valor, end=' ')
+        print()
+        letra +=1
 
-    if array_tabla[len(text)][len(array_tabla[len(text)])-1] == '2':
-        print('Paso')
+    if array_tabla[len(text)-1][len(array_tabla[len(text)-1])-1] == '2':
+        print('El numero: %s es una cadena valida' % text)
+    else:
+        print('El numero: %s NO es una cadena valida' % text)
 
 def rellenar_tabla(array_tabla, text):
     longitud = len(text)
     ultima_fila = len(array_tabla[longitud])
+    ceros = False
+    if array_tabla[longitud][ultima_fila-1] == '2':
+        ceros = True
     for fila in array_tabla:
         while True:
             if len(fila) >= ultima_fila:
                 break
-            fila.append('-1')
+            if (len(fila)+1 >= ultima_fila) and ceros:
+                fila.append('0')
+            else:
+                fila.append('-1')
 
 def evaluar_estados(estado, simbolo):
     if estado == '0':
