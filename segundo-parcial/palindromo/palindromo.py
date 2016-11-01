@@ -8,7 +8,7 @@ def palindromo(repeticiones):
     base_random = random.choice(base)
     cadena = cadena.replace('P', base_random)
 
-    print('Cadena final con base P=%s -> %s' %(base_random, cadena))
+    print('Cadena final con base P="%s" -> %s' %(base_random, cadena))
 
 def generar_cadena(cadena, repeticiones):
     if repeticiones > 0:

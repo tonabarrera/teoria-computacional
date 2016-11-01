@@ -3,7 +3,7 @@ from __future__ import print_function
 from palindromo import palindromo
 import random
 def main():
-    repeticiones = random.randint(1, 10)
+    repeticiones = random.randint(1, 100)
     print("""Gramatica libre de contexto Gpal = ({P},{0,1},A,P)
     Donde A es:
     1. P -> e
