@@ -21,17 +21,30 @@ class Diagrama(tk.Frame):
         self.normal()
         self.reves()
         self.masflechas()
+        self.puntos()
+        self.letras()
+
+    def letras(self):
+        self.canvas.create_text(125, 150+130, text='A')
+        self.canvas.create_text(225, 100+80, text='B')
+        self.canvas.create_text(385, 100+80, text='C')
+        self.canvas.create_text(545, 100+80, text='D')
+        self.canvas.create_text(225, 250+130, text='E')
+        self.canvas.create_text(385, 250+130, text='F')
+        self.canvas.create_text(545, 250+130, text='G')
+        self.canvas.create_text(705, 250+130, text='H')
 
     def dibujarCirculo(self, coordenadas):
         self.canvas.create_oval(coordenadas)
 
-    def dibujarLinea(self, coordenadas):
-        self.canvas.create_line(coordenadas)
+    def dibujarLinea(self, coord):
+        self.canvas.create_line(coord)
+        self.canvas.create_oval(coord[2]-3, coord[3]-3, coord[2]+3, coord[3]+3, fill='black')
 
     def dibujar_bases(self):
         x, y = 100, 100
         for num in range(3):
-            self.dibujarLinea([140, 260, 200, 180])
+            self.dibujarLinea([140, 260, 200, 185])
             self.dibujarCirculo([100+x, 255-y, 150+x, 305-y])
             self.dibujarLinea([250, 180, 360, 180])
             self.dibujarLinea([410, 180, 520, 180])
@@ -71,7 +84,7 @@ class Diagrama(tk.Frame):
         self.crear_arco([225, 310, 390, 410], extra)
         extra = {'start': -25, 'extend': -135}
         self.crear_arco([235, 260, 545, 455], extra)
-        extra = {'start': -25, 'extend': -165}
+        extra = {'start': -30, 'extend': -160}
         self.crear_arco([125, 205, 385, 455], extra)
         extra = {'start': -24, 'extend': -150}
         self.crear_arco([123, 115, 550, 520], extra)
@@ -81,20 +94,29 @@ class Diagrama(tk.Frame):
         self.crear_arco([235, 200, 730, 500], extra)
 
     def masflechas(self):
-        self.dibujarLinea([545, 205, 545, 355])
-        self.dibujarLinea([235, 200, 545, 355])
-        self.dibujarLinea([235, 200, 700, 355])
-        self.dibujarLinea([235, 200, 385, 355])
-        self.dibujarLinea([545, 205, 230, 355])
-        self.dibujarLinea([385, 205, 230, 355])
-        self.dibujarLinea([235, 200, 230, 355])
+        self.dibujarLinea([545, 205, 555, 355])
 
+        self.dibujarLinea([545, 355, 235, 200])
+        self.dibujarLinea([700, 355, 235, 200])
+        self.dibujarLinea([385, 355, 235, 200])
+        self.dibujarLinea([545, 205, 240, 360])
+        self.dibujarLinea([385, 205, 240, 360])
+        self.dibujarLinea([230, 355,235, 200])
 
-    def crear_arco(self, coordenadas, extra=None):
-        self.canvas.create_arc(coordenadas, start=extra['start'], extent=extra['extend'], style='arc')
+    def crear_arco(self, coord, extra=None):
+        self.canvas.create_arc(coord, start=extra['start'], extent=extra['extend'], style='arc')
+
+    def puntos(self):
+        self.canvas.create_oval(123, 250, 129, 257, fill='black')
+        self.canvas.create_oval(124, 301, 131, 308, fill='black')
+        self.canvas.create_oval(204, 361, 211, 368, fill='black')
+        self.canvas.create_oval(242, 389, 249, 396, fill='black')
+        self.canvas.create_oval(204, 161, 211, 168, fill='black')
+
+        self.canvas.create_oval(242, 163, 249, 170, fill='black')
 
     def centrarVentana(self):
-        ancho, altura = 900, 605
+        ancho, altura = 880, 605
         ancho_pantalla = self.winfo_screenwidth()
         altura_pantalla = self.winfo_screenheight()
         posicion_x = (ancho_pantalla - ancho)/2
