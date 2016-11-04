@@ -23,8 +23,42 @@ class Diagrama(tk.Frame):
         self.masflechas()
         self.puntos()
         self.letras()
+        self.etiquetas()
+
+    def etiquetas(self):
+        self.canvas.create_text(75, 245, text='Σ-e-w')
+        self.canvas.create_text(150, 180, text='Σ-e-w')
+        self.canvas.create_text(405, 565, text='Σ-e-w')
+        self.canvas.create_text(260, 465, text='Σ-a-e-w')
+        self.canvas.create_text(515, 90, text='Σ-a-e-w')
+        self.canvas.create_text(180, 400, text='Σ-b-e-w')
+        self.canvas.create_text(300, 90, text='Σ-b-e-w')
+        self.canvas.create_text(380, 530, text='Σ-e-w-y')
+        self.canvas.create_text(500, 510, text='e')
+        self.canvas.create_text(400, 460, text='e')
+        self.canvas.create_text(300, 420, text='e')
+        self.canvas.create_text(210, 325, text='e')
+        self.canvas.create_text(180, 335, text='e')
+        self.canvas.create_text(300, 170, text='e')
+        self.canvas.create_text(355, 215, text='e')
+        self.canvas.create_text(480, 230, text='e')
+        self.canvas.create_text(600, 310, text='w')
+        self.canvas.create_text(500, 320, text='w')
+        self.canvas.create_text(450, 100, text='w')
+        self.canvas.create_text(310, 140, text='w')
+        self.canvas.create_text(220, 130, text='w')
+        self.canvas.create_text(165, 215, text='w')
+        self.canvas.create_text(220, 235, text='w')
+        self.canvas.create_text(280, 255, text='w')
+        self.canvas.create_text(470, 170, text='b')
+        self.canvas.create_text(305, 370, text='b')
+        self.canvas.create_text(605, 370, text='y')
+
+        self.canvas.create_text(455, 370, text='a')
+        self.canvas.create_text(555, 250, text='a')
 
     def letras(self):
+        self.canvas.create_text(50, 265, text='Inicio')
         self.canvas.create_text(125, 150+130, text='A')
         self.canvas.create_text(225, 100+80, text='B')
         self.canvas.create_text(385, 100+80, text='C')
@@ -116,7 +150,7 @@ class Diagrama(tk.Frame):
         self.canvas.create_oval(242, 163, 249, 170, fill='black')
 
     def centrarVentana(self):
-        ancho, altura = 880, 605
+        ancho, altura = 850, 605
         ancho_pantalla = self.winfo_screenwidth()
         altura_pantalla = self.winfo_screenheight()
         posicion_x = (ancho_pantalla - ancho)/2
