@@ -59,14 +59,14 @@ class Diagrama(tk.Frame):
 
     def letras(self):
         self.canvas.create_text(50, 265, text='Inicio')
-        self.canvas.create_text(125, 150+130, text='A')
-        self.canvas.create_text(225, 100+80, text='B')
-        self.canvas.create_text(385, 100+80, text='C')
-        self.canvas.create_text(545, 100+80, text='D')
-        self.canvas.create_text(225, 250+130, text='E')
+        self.canvas.create_text(125, 150+130, text='B')
+        self.canvas.create_text(225, 100+80, text='C')
+        self.canvas.create_text(385, 100+80, text='E')
+        self.canvas.create_text(545, 100+80, text='G')
+        self.canvas.create_text(225, 250+130, text='D')
         self.canvas.create_text(385, 250+130, text='F')
-        self.canvas.create_text(545, 250+130, text='G')
-        self.canvas.create_text(705, 250+130, text='H')
+        self.canvas.create_text(545, 250+130, text='H')
+        self.canvas.create_text(705, 250+130, text='I')
 
     def dibujarCirculo(self, coordenadas):
         self.canvas.create_oval(coordenadas)

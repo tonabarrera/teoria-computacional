@@ -2,10 +2,13 @@
 from __future__ import print_function
 import random
 def palindromo(repeticiones):
-    base = ['', '0', '1']
     cadena = 'P'
-    cadena = generar_cadena(cadena, repeticiones)
-    base_random = random.choice(base)
+    base_random = ''
+    if repeticiones%2 == 1:
+        cadena = generar_cadena(cadena, (repeticiones-1)/2)
+        base_random = random.choice(['0', '1'])
+    else:
+        cadena = generar_cadena(cadena, repeticiones/2)
     cadena = cadena.replace('P', base_random)
 
     print('Cadena final con base P="%s" -> %s' %(base_random, cadena))

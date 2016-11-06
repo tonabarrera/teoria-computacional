@@ -1,16 +1,29 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-def automata(cadenas):
+def automata(texto, palabras, posiciones = []):
     estado = 'B'
-    for simbolo in cadenas:
+    palabra_aux = ''
+    num_palabra = 1
+    cumple = False
+    for simbolo in texto:
         if simbolo ==  '\n':
             simbolo = '\\n'
         print('-> delta(%s,%s)' % (estado, simbolo), end="\t")
         simbolo_aux = simbolo.lower()
         estado = estados(estado, simbolo_aux)
-        if estado == 'E' or estado == 'I':
-            print('Contine web o ebay')
+        if estado == 'G' or estado == 'I':
+            cumple = True
+
+        if (ord(simbolo_aux) < 123 and ord(simbolo_aux) > 96):
+            palabra_aux += simbolo
+        else:
+            if cumple:
+                palabras.append(palabra_aux)
+                posiciones.append(num_palabra)
+                cumple = False
+            palabra_aux = ''
+            num_palabra += 1
 
 def estados(estado, simbolo):
     if estado == 'B':
@@ -38,37 +51,39 @@ def estado_B(simbolo):
     if simbolo == 'w':
         return 'C'
     elif simbolo == 'e':
-        return 'F'
+        return 'D'
     return 'B'
 
 def estado_C(simbolo):
     if simbolo == 'w':
         return 'C'
     elif simbolo == 'e':
-        return 'D'
+        return 'E'
     return 'B'
 
 def estado_D(simbolo):
     if simbolo == 'b':
-        return 'E'
-    elif simbolo == 'e':
         return 'F'
+    elif simbolo == 'e':
+        return 'D'
+    elif simbolo == 'w':
+        return 'C'
     return 'B'
 
 def estado_E(simbolo):
-    if simbolo == 'a':
-        return 'H'
+    if simbolo == 'b':
+        return 'G'
     elif simbolo == 'e':
-        return 'F'
+        return 'D'
     elif simbolo == 'w':
         return 'C'
     return 'B'
 
 def estado_F(simbolo):
-    if simbolo == 'b':
-        return 'G'
+    if simbolo == 'a':
+        return 'H'
     elif simbolo == 'e':
-        return 'F'
+        return 'D'
     elif simbolo == 'w':
         return 'C'
     return 'B'
@@ -77,7 +92,7 @@ def estado_G(simbolo):
     if simbolo == 'a':
         return 'H'
     elif simbolo == 'e':
-        return 'F'
+        return 'D'
     elif simbolo == 'w':
         return 'C'
     return 'B'
@@ -86,14 +101,14 @@ def estado_H(simbolo):
     if simbolo == 'y':
         return 'I'
     elif simbolo == 'e':
-        return 'F'
+        return 'D'
     elif simbolo == 'w':
         return 'C'
     return 'B'
 
 def estado_I(simbolo):
     if simbolo == 'e':
-        return 'F'
+        return 'D'
     elif simbolo == 'w':
         return 'C'
     return 'B'
