@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from animacion import Animacion
 import time
+
 class Pila(object):
     def __init__(self):
         self.altura = -1
         self.elementos = []
-        self.estado = 'q0'
 
     def vacio(self):
         if self.altura == -1:
@@ -16,7 +15,7 @@ class Pila(object):
 
     def sacar(self):
         if self.vacio():
-            print("Vacio")
+            return 'e'
         else:
             valor = self.elementos[self.altura]
             self.altura -= 1
@@ -28,42 +27,80 @@ class Pila(object):
 
     def mostar(self):
         i = self.altura
+        cadena = ''
         while(i>-1):
-            print(self.elementos[i], end = ' ')
+            cadena += self.elementos[i]
             i -= 1
-        print('')
+        return cadena
 
-class Automata(Animacion):
-    def animar(self, cadena):
-        super(Automata, self).animar()
-        pila = Pila()
-        pila.meter('Zo')
-        estado = 'q'
-        cadena_aux = cadena
-        print(cadena)
-        for simbolo in cadena:
-            time.sleep(0.1)
-            cadena_aux = cadena_aux[1:]
-            pila.mostar()
-            print(cadena_aux)
-            if estado == 'q':
-                if simbolo == '0':
-                    pila.meter('X')
-                elif simbolo == '1':
-                    pila.sacar()
-                    estado = 'p'
-            elif estado == 'p':
-                if simbolo == '1':
-                    pila.sacar()
-                elif simbolo == '0':
-                    pila.meter('X')
+def automata(cadena):
+    pila = Pila()
+    pila.meter('Zo')
+    estado = 'q'
+    cadena_aux = cadena
+    cadena = cadena + ' '
+    for simbolo in cadena:
+        time.sleep(1)
+        if cadena_aux == '':
+            cadena_aux = 'e'
+        #print('(%s, %s, %s)' %(estado, cadena_aux, pila.mostar()), end='+')
+        pintar(estado, cadena_aux, pila)
+        if estado == 'q':
+            if simbolo == '0':
+                pila.meter('X')
+            elif simbolo == '1':
+                if pila.sacar() == 'Zo':
                     break
-        pila.mostar()
-        if estado == 'p':
-            if pila.sacar() == 'Zo':
+                estado = 'p'
+            else:
                 estado = 'f'
+                break
+        elif estado == 'p':
+            if simbolo == '1':
+                if pila.sacar() == 'Zo':
+                    estado = 'f'
+                    break
+            elif simbolo == '0':
+                pila.meter('X')
+                break
+            elif simbolo == ' ':
+                estado = 'f'
+                if pila.mostar() == 'Zo':
+                    break
+        cadena_aux = cadena_aux[1:]
 
-        if estado == 'f':
-            print("Valido")
-        else:
-            print("No valido")
+    time.sleep(1)
+    if cadena_aux == '':
+        cadena_aux = 'e'
+    pintar(estado, cadena_aux, pila)
+
+def pintar(estado, cadena_aux, stack):
+    pila = 'Zo'
+    if stack.mostar() != '':
+        pila = stack.mostar()
+
+    print('\n')
+    print('\n')
+    print('\n')
+    print('\n')
+    print('\n')
+    print('     %s' %cadena_aux)
+    print('     ^')
+    print('     |')
+    print('     |')
+    print('     |')
+    print('-----------')
+    print('|         |')
+    print('|    %s    |' %estado)
+    print('|         |')
+    print('-----------')
+    print('     |')
+    print('     |')
+    print('     |')
+    print('     v')
+    print('     %s' %pila)
+    print('\n')
+    print('\n')
+    print('\n')
+    print('\n')
+    print('\n')
