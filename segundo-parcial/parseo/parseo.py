@@ -4,9 +4,14 @@ from __future__ import print_function
 def proceso(cadena):
     derivacion = 'B'
     cadena += ' '
+    print('Cadena: ', cadena)
+    continuar = True
     for simbolo in cadena:
-        print('What: ', simbolo)
+        if not continuar:
+            break
+        print(derivacion)
         for paso in derivacion:
+            #print('Pre %s paso: %s simbolo %s' %(derivacion, paso, simbolo))
             if paso == 'B':
                 if simbolo == '(':
                     derivacion = derivacion.replace('B', '(RB', 1)
@@ -15,6 +20,7 @@ def proceso(cadena):
                     derivacion = derivacion.replace('B', '', 1)
                     break
                 else:
+                    continuar = False
                     break
             elif paso == 'R':
                 if simbolo == ')':
@@ -24,7 +30,6 @@ def proceso(cadena):
                     derivacion = derivacion.replace('R', '(RR', 1)
                     break
                 else:
+                    continuar = False
                     break
-            print('Pre: %s simbolo %s' % (derivacion, simbolo))
-        print('Derivacion: ', derivacion)
     print('Final: ', derivacion)

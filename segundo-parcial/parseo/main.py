@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from pila import automata
+from parseo import proceso
 import random
 
 separador = '='*50
@@ -36,18 +36,18 @@ def imprimir_menu():
         return 0
 
 def entrada_consola():
-    texto = input("Escribe el numero binario: ")
+    texto = input("Escribe la cadena de parentesis: ")
     automata(texto)
 
 def ejecutar_random():
     i = 0
     longitud_random = random.randint(1, 10)
-    numero_binario = ''
+    cadena = ''
     while i < longitud_random:
-        numero_binario += random.choice(['0', '1'])
+        cadena += random.choice(['(', ')'])
         i += 1
 
-    print("El numero aleatorio es: ", numero_binario)
-    automata(numero_binario)
+    print("La cadena es: ", cadena)
+    proceso(cadena)
 
 iniciar()
