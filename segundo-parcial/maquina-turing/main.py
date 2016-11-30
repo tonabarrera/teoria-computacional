@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from maquina import maquina
+from metodos import maquina
 import random
 
 separador = '='*50
@@ -37,17 +37,19 @@ def imprimir_menu():
 
 def entrada_consola():
     texto = input("Escribe un numero binario: ")
+    print('\n Historia de la maquina de Turing')
     maquina(texto)
 
 def ejecutar_random():
     i = 0
-    longitud_random = random.randint(1, 10)
+    longitud_random = random.randint(1, 100)
     binario = ''
     while i < longitud_random:
         binario += random.choice(['0', '1'])
         i += 1
 
     print("La cadena es: ", binario)
+    print('\n Historia de la maquina de Turing')
     maquina(binario)
 
 iniciar()
