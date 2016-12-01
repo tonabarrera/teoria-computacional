@@ -37,7 +37,7 @@ def imprimir_menu():
 
 def entrada_consola():
     texto = input("Escribe la cadena de parentesis: ")
-    automata(texto)
+    proceso(texto)
 
 def ejecutar_random():
     i = 0

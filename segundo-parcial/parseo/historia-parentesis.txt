@@ -1,0 +1,11 @@
+Cadena: ()()()() 
+B   Regla usada: B->(RB
+(RB   Regla usada: R->)
+()B   Regla usada: B->(RB
+()(RB   Regla usada: R->)
+()()B   Regla usada: B->(RB
+()()(RB   Regla usada: R->)
+()()()B   Regla usada: B->(RB
+()()()(RB   Regla usada: R->)
+()()()()B   Regla usada: B->e
+Final ()()()()
