@@ -3,14 +3,21 @@ from __future__ import print_function
 
 def maquina(cadena):
     continuar = True
+    archivo = open('turing-historia.txt', 'w')
     i = 0
     estado = 0
     cadena_aux = list(cadena)
+    cadena_final = ''
+    archivo.write('La cadena es: %s \n' %cadena)
     while continuar:
-        if i>= len(cadena_aux):
+        try:
+            simbolo = cadena_aux[i]
+        except Exception as e:
             cadena_aux.append('B')
-        imprimir_secuencia(estado, cadena_aux, i)
-        simbolo = cadena_aux[i]
+            simbolo = cadena_aux[i]
+        cadena_final = imprimir_secuencia(estado, cadena_aux, i)
+        print(cadena_final, end = '')
+        archivo.write(cadena_final)
         resultado = funcion_transicion(estado, simbolo)
         if len(resultado) == 0:
             break
@@ -20,8 +27,16 @@ def maquina(cadena):
             i += 1
         elif resultado[2] == 'L':
             i -= 1
-        print('  |-  ', end='')
+        print(' |- ', end='')
+        archivo.write(' |- ')
     print('\n')
+    if estado == 4:
+        print('Cadena valida')
+        archivo.write('\n\nCadena valida')
+    else:
+        print('Cadena invalida')
+        archivo.write('\nCadena invalida')
+    archivo.close()
 
 def imprimir_secuencia(estado, cadena, indice):
     cadena_aux = ''
@@ -31,7 +46,7 @@ def imprimir_secuencia(estado, cadena, indice):
             cadena_aux += '(q'+ str(estado) + ')'
         cadena_aux += cadena[i]
         i +=1
-    print(cadena_aux, end = '')
+    return cadena_aux
 
 def funcion_transicion(estado, simbolo):
     if estado == 0:
