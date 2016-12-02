@@ -3,7 +3,7 @@ from __future__ import print_function
 from diagrama import Diagrama
 from automata import automata
 
-separador = '*'*50
+separador = '='*50
 
 def main():
     continuar = True
@@ -44,10 +44,11 @@ def entrada_consola():
     texto += ' '
     diccionario = {}
     diccionario = automata(texto)
-    print('\n', diccionario)
+    imprimir_diccionario(diccionario)
 
 def entrada_archivo():
     texto = input('Escribe el nombre del archivo: ')
+    i = 1
     try:
         archivo = open(texto, 'r')
     except Exception as e:
@@ -58,8 +59,18 @@ def entrada_archivo():
     for linea in archivo:
         diccionario.append(automata(linea))
         num_linea += 1
-    print('\n', diccionario)
+    while i<num_linea:
+        print('\nEn la linea: ', i)
+        imprimir_diccionario(diccionario[i-1])
+        i +=1
     archivo.close()
+
+def imprimir_diccionario(diccionario):
+    print('\nSe encontraron %s web y %s ebays' %(diccionario['num_web'], diccionario['num_ebay']))
+    print('En las posiciones:' )
+    print('%s para web' %diccionario['web_pos'])
+    print('%s para ebay' %diccionario['ebay_pos'])
+    print('Las palabras encontradas fueron: %s' %diccionario['palabras'])
 
 def ver_diagrama():
     print('Mostrando diagrama del autómata. Cierre la ventana para continuar')
