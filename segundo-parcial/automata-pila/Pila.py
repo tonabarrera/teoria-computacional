@@ -25,7 +25,7 @@ class Pila(object):
         self.altura += 1
         self.elementos[self.altura:] = [elemento]
 
-    def mostar(self):
+    def mostrar(self):
         i = self.altura
         cadena = ''
         while(i>-1):
@@ -33,23 +33,29 @@ class Pila(object):
             i -= 1
         return cadena
 
-def automata(cadena):
+def automata(cadena, ver_animacion):
     pila = Pila()
+    archivo = open('historia-pila.txt', 'w')
     pila.meter('Zo')
     estado = 'q'
     cadena_aux = cadena
     cadena = cadena + ' '
+    archivo.write('La cadena es: ' + cadena_aux + '\n')
     for simbolo in cadena:
-        time.sleep(1)
         if cadena_aux == '':
             cadena_aux = 'e'
-        #print('(%s, %s, %s)' %(estado, cadena_aux, pila.mostar()), end='+')
-        pintar(estado, cadena_aux, pila)
+        if ver_animacion:
+            time.sleep(1)
+            pintar(estado, cadena_aux, pila)
+        else:
+            print('(%s, %s, %s)' %(estado, cadena_aux, pila.mostrar()), end=' |- ')
+        archivo.write('(%s, %s, %s) |- ' %(estado, cadena_aux, pila.mostrar()))
         if estado == 'q':
             if simbolo == '0':
                 pila.meter('X')
             elif simbolo == '1':
                 if pila.sacar() == 'Zo':
+                    pila.meter('Zo')
                     break
                 estado = 'p'
             else:
@@ -59,25 +65,41 @@ def automata(cadena):
             if simbolo == '1':
                 if pila.sacar() == 'Zo':
                     estado = 'f'
+                    pila.meter('Zo')
                     break
             elif simbolo == '0':
                 pila.meter('X')
+                cadena_aux = cadena_aux[1:]
                 break
             elif simbolo == ' ':
                 estado = 'f'
-                if pila.mostar() == 'Zo':
+                if pila.mostrar() == 'Zo':
                     break
         cadena_aux = cadena_aux[1:]
 
     time.sleep(1)
     if cadena_aux == '':
         cadena_aux = 'e'
-    pintar(estado, cadena_aux, pila)
+    if ver_animacion:
+        time.sleep(1)
+        pintar(estado, cadena_aux, pila)
+    else:
+        print('(%s, %s, %s)' %(estado, cadena_aux, pila.mostrar()))
+        print('\n')
+    archivo.write('(%s, %s, %s)' %(estado, cadena_aux, pila.mostrar()))
+    if (pila.mostrar() == 'Zo') and cadena_aux == 'e':
+        print('\nCadena valida')
+        archivo.write('\nCadena valida')
+    else:
+        print('\nCadena invalida')
+        archivo.write('\nCadena invalida')
+    archivo.close()
+
 
 def pintar(estado, cadena_aux, stack):
     pila = 'Zo'
-    if stack.mostar() != '':
-        pila = stack.mostar()
+    if stack.mostrar() != '':
+        pila = stack.mostrar()
 
     print('\n')
     print('\n')

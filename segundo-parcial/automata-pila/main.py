@@ -37,7 +37,15 @@ def imprimir_menu():
 
 def entrada_consola():
     texto = input("Escribe el numero binario: ")
-    automata(texto)
+    animacion = ver_animacion()
+    automata(texto, animacion)
+
+def ver_animacion():
+    opcion = input("Ver animacion [s/n]: ")
+    if opcion == 's':
+        return True
+    else:
+        return False
 
 def ejecutar_random():
     i = 0
@@ -48,6 +56,7 @@ def ejecutar_random():
         i += 1
 
     print("El numero aleatorio es: ", numero_binario)
-    automata(numero_binario)
+    animacion = ver_animacion()
+    automata(texto, animacion)
 
 iniciar()

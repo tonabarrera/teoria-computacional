@@ -1,0 +1,2 @@
+La cadena es: 00011
+(q, 00011, Zo) |- (q, 0011, XZo) |- (q, 011, XXZo) |- (q, 11, XXXZo) |- (p, 1, XXZo) |- (p, e, XZo) |- (f, e, XZo)Cadena invalida
