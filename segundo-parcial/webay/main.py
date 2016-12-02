@@ -42,9 +42,24 @@ def imprimir_menu():
 def entrada_consola():
     texto = input("Escribe el texto: ")
     texto += ' '
-    palabras = []
-    automata(texto, palabras)
-    print('\n', palabras)
+    diccionario = {}
+    diccionario = automata(texto)
+    print('\n', diccionario)
+
+def entrada_archivo():
+    texto = input('Escribe el nombre del archivo: ')
+    try:
+        archivo = open(texto, 'r')
+    except Exception as e:
+        print('Error al abrir archivo: ', e)
+        return 0
+    diccionario = []
+    num_linea = 1
+    for linea in archivo:
+        diccionario.append(automata(linea))
+        num_linea += 1
+    print('\n', diccionario)
+    archivo.close()
 
 def ver_diagrama():
     print('Mostrando diagrama del autómata. Cierre la ventana para continuar')

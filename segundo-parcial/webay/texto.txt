@@ -1,4 +1,4 @@
-How to Create a Website to Sell Items on eBay
+How to Create a Website to Sell Items on eBay.
 Ebay, an online auction website, lets buyers and sellers exchange goods through the Internet.
 As a small-business owner, you may decide to create a website to sell items on eBay.
 Design your website and listings, following eBay's guidelines, to ensure that you follow the rules.
@@ -7,10 +7,8 @@ Create a domain name that you wish to use for your website.
 Use a domain search service on a web-hosting service to enter potential domain names.
 The search service will search the domain database and tell you whether the domain name is available.
 When you find an available domain name you want to use, purchase it through a domain registrar.
-
 Purchase web-hosting service.
 For a monthly or annual fee, this service will host your websites on its system.
-
 Point the domain you purchased to your web host.
 Get the Domain Name System servers from your web host.
 This information should be in the informational email you received from the web host after purchasing the service.
@@ -19,17 +17,7 @@ You probably have two different DNS server numbers: a primary and secondary.
 Place the server number with the "1" first and the server number with the "2" second.
 Save your changes and wait for the domain to switch over to your web host.
 This may take up to 48 hours.
-
 Create a basic website to sell your eBay items.
 Use a site-builder template. Using a template enables simple drag-and-drop capabilities where you simply enter text into the template to create your website.
-
 Add information to your website that enhances and builds on your eBay auctions.
 Place reviews from former and current customers on your website, positive feedback from eBay buyers, links to your eBay listings, information about your business and even additional items you are selling.
-If you place ads for items, price the items selling on your website slightly higher than your eBay listings so eBay does not view your website as a competitor and cancel your listings.
-
-Create an "About Me" page on eBay that gives information about you as a seller.
-Give a brief description of your history as an eBay seller and include a link to your website in your About Me page.
-
-Add a link to your About Me page in your listings, encouraging buyers to learn more about you by reading your page.
-Ebay allows you to link to your About Me page but not to other websites.
-Therefore, by placing a link to your About Me page that contains another link to your website, you can drive traffic to your website while staying within eBay's guidelines.

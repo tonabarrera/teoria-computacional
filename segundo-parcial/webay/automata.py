@@ -1,29 +1,43 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-def automata(texto, palabras, posiciones = []):
+def automata(texto):
     estado = 'B'
     palabra_aux = ''
     num_palabra = 1
     cumple = False
+    ebay = 0
+    palabra_posicion = 0
+    ebay_pos = []
+    web_pos = []
+    web = 0
+    palabras = []
+    diccionario = {}
     for simbolo in texto:
+        palabra_posicion += 1
+        simbolo_aux = simbolo.lower()
         if simbolo ==  '\n':
             simbolo = '\\n'
         print('-> delta(%s,%s)' % (estado, simbolo), end="\t")
-        simbolo_aux = simbolo.lower()
         estado = estados(estado, simbolo_aux)
         if estado == 'G' or estado == 'I':
             cumple = True
+        if estado == 'G':
+            web += 1
+            web_pos.append([palabra_posicion-2, palabra_posicion])
+        elif estado == 'I':
+            ebay += 1
+            ebay_pos.append([palabra_posicion-3, palabra_posicion])
 
         if (ord(simbolo_aux) < 123 and ord(simbolo_aux) > 96):
             palabra_aux += simbolo
         else:
             if cumple:
                 palabras.append(palabra_aux)
-                posiciones.append(num_palabra)
                 cumple = False
             palabra_aux = ''
-            num_palabra += 1
+    diccionario = {'num_web': web, 'num_ebay':ebay, 'web_pos':web_pos, 'ebay_pos':ebay_pos, 'palabras':palabras}
+    return diccionario
 
 def estados(estado, simbolo):
     if estado == 'B':
