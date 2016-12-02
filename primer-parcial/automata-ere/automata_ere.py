@@ -6,6 +6,8 @@ def verificar_palabras(texto, palabras_ere, posiciones = []):
     palabra_aux = ''
     estado = 0
     num_palabra = 1
+    num_web = 0
+    num_ebay = 0
     for simbolo in texto:
         simbolo_aux = simbolo.lower()
         if simbolo ==  '\n':
