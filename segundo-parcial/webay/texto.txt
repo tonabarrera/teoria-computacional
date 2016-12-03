@@ -8,16 +8,3 @@ Use a domain search service on a web-hosting service to enter potential domain n
 The search service will search the domain database and tell you whether the domain name is available.
 When you find an available domain name you want to use, purchase it through a domain registrar.
 Purchase web-hosting service.
-For a monthly or annual fee, this service will host your websites on its system.
-Point the domain you purchased to your web host.
-Get the Domain Name System servers from your web host.
-This information should be in the informational email you received from the web host after purchasing the service.
-Log in to your account at the registrar where you purchased your domain and enter the DNS servers information for your web host into the domain information.
-You probably have two different DNS server numbers: a primary and secondary.
-Place the server number with the "1" first and the server number with the "2" second.
-Save your changes and wait for the domain to switch over to your web host.
-This may take up to 48 hours.
-Create a basic website to sell your eBay items.
-Use a site-builder template. Using a template enables simple drag-and-drop capabilities where you simply enter text into the template to create your website.
-Add information to your website that enhances and builds on your eBay auctions.
-Place reviews from former and current customers on your website, positive feedback from eBay buyers, links to your eBay listings, information about your business and even additional items you are selling.

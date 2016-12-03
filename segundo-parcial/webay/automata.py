@@ -29,7 +29,7 @@ def automata(texto):
             ebay += 1
             ebay_pos.append([palabra_posicion-3, palabra_posicion])
 
-        if (ord(simbolo_aux) < 123 and ord(simbolo_aux) > 96):
+        if ((ord(simbolo_aux) < 123 and ord(simbolo_aux) > 96) or ord(simbolo_aux) == 241):
             palabra_aux += simbolo
         else:
             if cumple:

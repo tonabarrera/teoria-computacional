@@ -1,4 +1,4 @@
-#diagrama_protocolo.py
+# diagrama_webay.py
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import tkinter as tk
