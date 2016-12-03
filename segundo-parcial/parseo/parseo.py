@@ -42,6 +42,12 @@ def proceso(cadena):
                 elif simbolo == ' ':
                     continuar = False
                     break
-    archivo.write('\nFinal %s' %derivacion)
-    print('Final: ', derivacion)
+    archivo.write('\nFinal: %s' %derivacion)
+    print('\nFinal: ', derivacion)
+    if paso == 'B' and simbolo == ' ':
+        print('\nCadena balanceada')
+        archivo.write('\nCadena balanceada')
+    else:
+        print('\nCandena no balanceada')
+        archivo.write('\nCadena no balanceada')
     archivo.close()

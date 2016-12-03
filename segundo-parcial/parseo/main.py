@@ -13,7 +13,7 @@ def iniciar():
         elif opcion == 2:
             ejecutar_random()
         else:
-            break # Sal del programa
+            break
         print('=' * 100)
         opcion = input("Reintentar [s/n]: ")
         if opcion.lower() != 's':
@@ -41,7 +41,7 @@ def entrada_consola():
 
 def ejecutar_random():
     i = 0
-    longitud_random = random.randint(1, 10)
+    longitud_random = random.randint(1, 20)
     cadena = ''
     while i < longitud_random:
         cadena += random.choice(['(', ')'])

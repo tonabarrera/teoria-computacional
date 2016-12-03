@@ -1,4 +1,4 @@
-Cadena: ()()()() 
+Cadena: ()()()(())((())()) 
 B   Regla usada: B->(RB
 (RB   Regla usada: R->)
 ()B   Regla usada: B->(RB
@@ -6,6 +6,17 @@ B   Regla usada: B->(RB
 ()()B   Regla usada: B->(RB
 ()()(RB   Regla usada: R->)
 ()()()B   Regla usada: B->(RB
-()()()(RB   Regla usada: R->)
-()()()()B   Regla usada: B->e
-Final ()()()()
+()()()(RB   Regla usada: R->(RR
+()()()((RRB   Regla usada: R->)
+()()()(()RB   Regla usada: R->)
+()()()(())B   Regla usada: B->(RB
+()()()(())(RB   Regla usada: R->(RR
+()()()(())((RRB   Regla usada: R->(RR
+()()()(())(((RRRB   Regla usada: R->)
+()()()(())((()RRB   Regla usada: R->)
+()()()(())((())RB   Regla usada: R->(RR
+()()()(())((())(RRB   Regla usada: R->)
+()()()(())((())()RB   Regla usada: R->)
+()()()(())((())())B   Regla usada: B->e
+Final: ()()()(())((())())
+Cadena balanceada
