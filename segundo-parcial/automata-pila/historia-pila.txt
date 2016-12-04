@@ -1,2 +1,3 @@
-La cadena es: 00011
-(q, 00011, Zo) |- (q, 0011, XZo) |- (q, 011, XXZo) |- (q, 11, XXXZo) |- (p, 1, XXZo) |- (p, e, XZo) |- (f, e, XZo)Cadena invalida
+La cadena es: 00111
+(q, 00111, Zo)|-(q, 0111, XZo)|-(q, 111, XXZo)|-(p, 11, XZo)|-(p, 1, Zo)
+Cadena invalida

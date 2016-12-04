@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from metodos import maquina
+from pila import automata
 import random
 
 separador = '='*50
@@ -36,20 +36,27 @@ def imprimir_menu():
         return 0
 
 def entrada_consola():
-    texto = input("Escribe un numero binario: ")
-    print('\n Historia de la maquina de Turing')
-    maquina(texto)
+    texto = input("Escribe el numero binario: ")
+    animacion = ver_animacion()
+    automata(texto, animacion)
+
+def ver_animacion():
+    opcion = input("Ver animacion [s/n]: ")
+    if opcion == 's':
+        return True
+    else:
+        return False
 
 def ejecutar_random():
     i = 0
-    longitud_random = random.randint(1, 100)
-    binario = ''
+    longitud_random = random.randint(1, 1000)
+    numero_binario = ''
     while i < longitud_random:
-        binario += random.choice(['0', '1'])
+        numero_binario += random.choice(['0', '1'])
         i += 1
 
-    print("La cadena es: ", binario)
-    print('\n Historia de la maquina de Turing')
-    maquina(binario)
+    print("El numero aleatorio es: ", numero_binario)
+    animacion = ver_animacion()
+    automata(numero_binario, animacion)
 
 iniciar()

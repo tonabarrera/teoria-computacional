@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from pila import automata
+from parseo import proceso
 import random
 
 separador = '='*50
@@ -13,7 +13,7 @@ def iniciar():
         elif opcion == 2:
             ejecutar_random()
         else:
-            break # Sal del programa
+            break
         print('=' * 100)
         opcion = input("Reintentar [s/n]: ")
         if opcion.lower() != 's':
@@ -36,27 +36,18 @@ def imprimir_menu():
         return 0
 
 def entrada_consola():
-    texto = input("Escribe el numero binario: ")
-    animacion = ver_animacion()
-    automata(texto, animacion)
-
-def ver_animacion():
-    opcion = input("Ver animacion [s/n]: ")
-    if opcion == 's':
-        return True
-    else:
-        return False
+    texto = input("Escribe la cadena de parentesis: ")
+    proceso(texto)
 
 def ejecutar_random():
     i = 0
-    longitud_random = random.randint(1, 10)
-    numero_binario = ''
+    longitud_random = random.randint(1, 1000)
+    cadena = ''
     while i < longitud_random:
-        numero_binario += random.choice(['0', '1'])
+        cadena += random.choice(['(', ')'])
         i += 1
 
-    print("El numero aleatorio es: ", numero_binario)
-    animacion = ver_animacion()
-    automata(texto, animacion)
+    print("La cadena es: ", cadena)
+    proceso(cadena)
 
 iniciar()

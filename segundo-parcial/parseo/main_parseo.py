@@ -41,7 +41,7 @@ def entrada_consola():
 
 def ejecutar_random():
     i = 0
-    longitud_random = random.randint(1, 20)
+    longitud_random = random.randint(1, 1000)
     cadena = ''
     while i < longitud_random:
         cadena += random.choice(['(', ')'])
