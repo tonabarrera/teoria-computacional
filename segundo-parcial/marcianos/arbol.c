@@ -13,7 +13,6 @@ int insertar(struct Arbol **arbol, int valor[3], Nodo *lista, int continuar) {
         *arbol = arbol_nuevo; //Raiz
     }
     if (continuar == 0){
-        //printf("Termino");
         return 1;
     }
     if (valor[1] > 0 && valor[2] > 0) {

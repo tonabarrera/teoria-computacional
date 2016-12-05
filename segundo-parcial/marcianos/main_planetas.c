@@ -17,6 +17,7 @@ int menu_continuar() {
 }
 
 int random_longitud() {
+    //numero = rand () % (N-M+1) + M;  Está entre M y N
     int longitud = 1 + rand() % (1000 + 1 - 1);
     return longitud;
 }
